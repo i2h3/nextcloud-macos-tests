@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA8FFEC02F5EBF3300317C4C /* Testing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8FFEBC2F5EBF2400317C4C /* Testing.framework */; };
-		AA8FFEC12F5EBF3300317C4C /* Testing.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AA8FFEBC2F5EBF2400317C4C /* Testing.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AA8FFEC52F5ECAD000317C4C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = AA8FFEC42F5ECAD000317C4C /* README.md */; };
 /* End PBXBuildFile section */
 
@@ -19,7 +17,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				AA8FFEC12F5EBF3300317C4C /* Testing.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -28,7 +25,6 @@
 
 /* Begin PBXFileReference section */
 		AA8FFEAD2F5EBD8D00317C4C /* FileProviderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FileProviderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA8FFEBC2F5EBF2400317C4C /* Testing.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Testing.framework; path = Platforms/MacOSX.platform/Developer/Library/Frameworks/Testing.framework; sourceTree = DEVELOPER_DIR; };
 		AA8FFEC42F5ECAD000317C4C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -45,7 +41,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA8FFEC02F5EBF3300317C4C /* Testing.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,7 +52,6 @@
 			children = (
 				AA8FFEC42F5ECAD000317C4C /* README.md */,
 				AA8FFEAF2F5EBD8D00317C4C /* FileProviderTests */,
-				AA8FFEBB2F5EBF2400317C4C /* Frameworks */,
 				AA8FFEAE2F5EBD8D00317C4C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,14 +62,6 @@
 				AA8FFEAD2F5EBD8D00317C4C /* FileProviderTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		AA8FFEBB2F5EBF2400317C4C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				AA8FFEBC2F5EBF2400317C4C /* Testing.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
