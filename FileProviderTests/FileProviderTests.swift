@@ -1,7 +1,12 @@
 import Foundation
 import XCTest
 
-final class FileProviderTests: XCTestCase {
+final class FileProviderTests: TestCase {
+    override func setUp() async throws {
+        try await super.setUp()
+        try clean()
+    }
+
     @MainActor
     func testDomainAppearance() throws {
         // At this time, the test assumes that the client was setup with a single account manually beforehand.
