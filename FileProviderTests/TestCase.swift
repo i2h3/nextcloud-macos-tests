@@ -35,4 +35,8 @@ class TestCase: XCTestCase {
 
         logger.debug("Cleanup completed.")
     }
+
+    func reportMissingImplementation(file: StaticString = #filePath, line: UInt = #line) {
+        XCTFail("This test is not implemented yet.", file: file, line: line)
+    }
 }

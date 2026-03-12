@@ -33,6 +33,34 @@ As of writing, the test matrix looks like this:
 | 15 (Sequoia) |              |              |
 | 26 (Tahoe)   |              |              |
 
+## Contributing
+
+Every test implementation should have a documentation comment which explains the test in natural language. At best, it also includes Mermaid sequence diagrams.
+
+```mermaid
+sequenceDiagram
+    box transparent Local
+        participant User
+        participant Finder
+        participant Extension
+    end
+    box transparent Remote
+        participant Server
+    end
+    User->>Finder: Navigates to root container
+    activate Finder
+    Finder->>Extension: Asks for root container enumeration
+    activate Extension
+    Extension->>Server: Asks for content listing
+    activate Server
+    Server->>Extension: Provides content listing
+    deactivate Server
+    Extension->>Finder: Enumerates root container content
+    deactivate Extension
+    Finder->>User: Presents items
+    deactivate Finder
+```
+
 ## License
  
  See [LICENSE](LICENSE).
