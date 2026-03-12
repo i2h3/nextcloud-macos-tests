@@ -10,7 +10,9 @@ The end goal is to run this parallelized in virtual macOS machines with the same
 
 ## Preconditions
 
+- The latest supported major **Xcode** release must be installed in the test environment.
 - **English (US)** is set as the system language in the test environment. This is required to match user interface elements based on their text labels. Not all of them, including first-party apps, have accessibility identifiers defined.
+- **Light appearance** is defined for macOS. 
 - These tests assume that there is one client app bundle to test at `/Applications/Nextcloud.app` and only verifies that its version equals the expected version specified through an argument or environment variable.
 - These tests assume that there is one Nextcloud server to run against which is specified through an argument or an environment variable, including the account details.
 
