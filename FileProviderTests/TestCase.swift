@@ -16,7 +16,8 @@ class TestCase: XCTestCase {
         logger.debug("Cleaning up the test environment…")
 
         let paths = [
-            "~/Library/Containers/com.nextcloud.desktopclient"
+            "~/Library/Containers/com.nextcloud.desktopclient",
+            "~/Library/Group Containers/NKUJUXUJ3B.com.nextcloud.desktopclient"
         ]
 
         for path in paths {
