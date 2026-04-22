@@ -9,6 +9,11 @@ class TestCase: XCTestCase {
     private let fileManager = FileManager.default
     private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "Environment")
 
+    override func setUp() async throws {
+        try await super.setUp()
+        try clean()
+    }
+
     ///
     /// Remove any files and folders the subject under test uses or creates.
     ///
@@ -32,7 +37,7 @@ class TestCase: XCTestCase {
             // Expand tilde and create standardized, absolute URL
             let expandedPath = NSString(string: path).expandingTildeInPath
             let url = URL(fileURLWithPath: expandedPath).standardized
-            
+
             // Check if the item exists
             if fileManager.fileExists(atPath: url.path) {
                 try fileManager.removeItem(at: url)

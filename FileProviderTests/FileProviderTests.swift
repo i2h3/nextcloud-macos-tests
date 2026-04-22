@@ -2,11 +2,7 @@ import Foundation
 import XCTest
 
 final class FileProviderTests: TestCase {
-    override func setUp() async throws {
-        try await super.setUp()
-        try clean()
-    }
-
+    
     // MARK: - Essentials
 
     @MainActor
