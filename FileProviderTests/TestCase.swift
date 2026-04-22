@@ -50,6 +50,9 @@ class TestCase: XCTestCase {
         logger.debug("Cleanup completed.")
     }
 
+    ///
+    /// A helper to let a calling test implementation fail with a message that it is not implemented yet.
+    ///
     func reportMissingImplementation(file: StaticString = #filePath, line: UInt = #line) {
         XCTFail("This test is not implemented yet.", file: file, line: line)
     }
