@@ -16,6 +16,23 @@ The end goal is to run this parallelized in virtual macOS machines with the same
 - These tests assume that there is one client app bundle to test at `/Applications/Nextcloud.app` and only verifies that its version equals the expected version specified through an argument or environment variable.
 - These tests assume that there is one Nextcloud server to run against which is specified through an argument or an environment variable, including the account details.
 
+## How to run
+
+For now, the tests still require manual interaction with Xcode.
+The following steps are intended to be automated in the future.
+
+1. Open the "NextcloudMacOSTests" Xcode project.
+2. Select the "FileProviderTests" scheme.
+3. Edit the scheme and update the values of the already defined environment variables to what fits your environment.
+
+| Environment variable       | Description                                                                                  |
+|----------------------------|----------------------------------------------------------------------------------------------|
+| `NEXTCLOUD_TESTS_PASSWORD` | The account password to be used by the desktop client during automatic account configuration |
+| `NEXTCLOUD_TESTS_SERVER`   | The full server address, in example `http://localhost:61503/`                                |
+| `NEXTCLOUD_TESTS_USER`     | The user name for logging in to the Nextcloud server                                         |
+
+Select the "Product" menu and then the "Test" item in Xcode.
+
 ## Out of Scope
 
 - **Building the subject under test.** The Nextcloud desktop client is built the with the latest major Xcode release on the latest major macOS release regardless of targeted macOS release. Hence the same build can be reused in all test runs. This is also one of the reasons why this project is decoupled from the actual client project. 

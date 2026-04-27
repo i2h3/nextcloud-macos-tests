@@ -6,48 +6,31 @@ import XCTest
 /// Common base class for all tests in this project.
 ///
 class TestCase: XCTestCase {
-    private let fileManager = FileManager.default
-    private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "Environment")
+    let finder = XCUIApplication(bundleIdentifier: "com.apple.finder")
+    let fileManager = FileManager.default
+    let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "TestCase")
+
+    // MARK: Credentials
+
+    var password: String? {
+        ProcessInfo.processInfo.environment["NEXTCLOUD_TESTS_PASSWORD"]
+    }
+
+    var server: String? {
+        ProcessInfo.processInfo.environment["NEXTCLOUD_TESTS_SERVER"]
+    }
+
+    var user: String? {
+        ProcessInfo.processInfo.environment["NEXTCLOUD_TESTS_USER"]
+    }
+
+    // MARK: Lifecycle
 
     override func setUp() async throws {
         try await super.setUp()
+        try assertClientIsNotRunning()
+        try validateClient()
         try clean()
-    }
-
-    ///
-    /// Remove any files and folders the subject under test uses or creates.
-    ///
-    func clean() throws {
-        logger.debug("Cleaning up the test environment…")
-
-        let paths = [
-            "~/Library/Caches/com.nextcloud.desktopclient",
-            "~/Library/Caches/Nextcloud",
-            "~/Library/Containers/com.nextcloud.desktopclient",
-            "~/Library/Containers/com.nextcloud.desktopclient.FinderSyncExt",
-            "~/Library/Containers/com.nextcloud.desktopclient.FileProviderExt",
-            "~/Library/Containers/com.nextcloud.desktopclient.FileProviderUIExt",
-            "~/Library/Group Containers/com.nextcloud.desktopclient",
-            "~/Library/Group Containers/NKUJUXUJ3B.com.nextcloud.desktopclient",
-            "~/Library/Preferences/Nextcloud",
-            "~/Library/Preferences/com.nextcloud.desktopclient.plist"
-        ]
-
-        for path in paths {
-            // Expand tilde and create standardized, absolute URL
-            let expandedPath = NSString(string: path).expandingTildeInPath
-            let url = URL(fileURLWithPath: expandedPath).standardized
-
-            // Check if the item exists
-            if fileManager.fileExists(atPath: url.path) {
-                try fileManager.removeItem(at: url)
-                logger.debug("Deleted: \(url.path)")
-            } else {
-                logger.debug("Item to delete does not exist: \(url.path)")
-            }
-        }
-
-        logger.debug("Cleanup completed.")
     }
 
     ///
